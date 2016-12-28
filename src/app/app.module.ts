@@ -5,12 +5,26 @@ import { MyApp } from './app.component';
 // importing pages
 import { HomePage } from '../pages/home/home';
 import { SignupPage } from '../pages/signup/signup';
+import { LoginPage } from '../pages/login/login';
+import { ExistingUserPage } from '../pages/existing-user/existing-user';
+import { ComplaintmodalPage } from '../pages/complaintmodal/complaintmodal';
+import { HelpmodalPage } from '../pages/helpmodal/helpmodal';
+import { ProfilemodalPage } from '../pages/profilemodal/profilemodal';
+import { QuestionsmodalPage } from '../pages/questionsmodal/questionsmodal';
+import { SuggestionsmodalPage } from '../pages/suggestionsmodal/suggestionsmodal';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    SignupPage
+    SignupPage,
+    LoginPage,
+    ExistingUserPage,
+    ComplaintmodalPage,
+    HelpmodalPage,
+    ProfilemodalPage,
+    QuestionsmodalPage,
+    SuggestionsmodalPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -19,7 +33,14 @@ import { SignupPage } from '../pages/signup/signup';
   entryComponents: [
     MyApp,
     HomePage,
-    SignupPage
+    SignupPage,
+    LoginPage,
+    ExistingUserPage,
+    ComplaintmodalPage,
+    HelpmodalPage,
+    ProfilemodalPage,
+    QuestionsmodalPage,
+    SuggestionsmodalPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })

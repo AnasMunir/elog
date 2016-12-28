@@ -27,7 +27,7 @@ export class SignupPage {
         originCountry: [''],
         VIN: ['', Validators.required], //required
         bestContact: ['']
-      })
+      });
     }
   submit() {
     this.submitAttempt = true;
