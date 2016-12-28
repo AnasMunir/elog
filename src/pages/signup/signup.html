@@ -1,0 +1,115 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>signup</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<p *ngIf="submitAttempt" style="color: #ea6153;">Please fill out all details accurately.</p>
+<ion-content padding>
+  <form [formGroup]="signupForm">
+
+    <ion-item>
+      <ion-label floating>First Name</ion-label>
+      <ion-input formControlName="firstName" type="text"
+        [class.invalid]="!signupForm.controls.firstName.valid && (signupForm.controls.firstName.dirty || submitAttempt)">
+      </ion-input>
+    </ion-item>
+    <ion-item *ngIf="!signupForm.controls.firstName.valid  && (signupForm.controls.firstName.dirty || submitAttempt)">
+      <p>Please enter a valid name.</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Last Name</ion-label>
+      <ion-input formControlName="lastName" type="text"
+        [class.invalid]="!signupForm.controls.lastName.valid && (signupForm.controls.lastName.dirty || submitAttempt)">
+      </ion-input>
+    </ion-item>
+    <ion-item *ngIf="!signupForm.controls.lastName.valid  && (signupForm.controls.lastName.dirty || submitAttempt)">
+      <p>Please enter a valid name.</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Email</ion-label>
+      <ion-input formControlName="email" type="email"
+        [class.invalid]="!signupForm.controls.email.valid && (signupForm.controls.email.dirty || submitAttempt)">
+      </ion-input>
+    </ion-item>
+    <ion-item *ngIf="!signupForm.controls.email.valid  && (signupForm.controls.email.dirty || submitAttempt)">
+      <p>Please enter a valid email.</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Phone Number</ion-label>
+      <ion-input formControlName="phoneNumber" type="number"
+        [class.invalid]="!signupForm.controls.phoneNumber.valid && (signupForm.controls.phoneNumber.dirty || submitAttempt)">
+      </ion-input>
+    </ion-item>
+    <ion-item *ngIf="!signupForm.controls.phoneNumber.valid  && (signupForm.controls.phoneNumber.dirty || submitAttempt)">
+      <p>Please enter a valid phone number.</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Is this Phone Number</ion-label>
+      <ion-select formControlName="isThisPhoneNumber"
+        [class.invalid]="!signupForm.controls.isThisPhoneNumber.valid && (signupForm.controls.isThisPhoneNumber.dirty || submitAttempt)">
+        <ion-option value="mobile" checked="true">Mobile</ion-option>
+        <ion-option value="work" >Work Phone</ion-option>
+        <ion-option value="home" >Home Landline</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>CDL#</ion-label>
+      <ion-input formControlName="CDL"
+        [class.invalid]="!signupForm.controls.CDL.valid && (signupForm.controls.CDL.dirty || submitAttempt)">
+      </ion-input>
+    </ion-item>
+    <ion-item *ngIf="!signupForm.controls.CDL.valid  && (signupForm.controls.CDL.dirty || submitAttempt)">
+      <p>Please enter a valid CDL.</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Issuing State</ion-label>
+      <ion-datetime formControlName="issuingState" displayFormat="MM-DD-YYYY"
+        [class.invalid]="!signupForm.controls.issuingState.valid && (signupForm.controls.issuingState.dirty || submitAttempt)">
+      </ion-datetime>
+    </ion-item>
+    <ion-item *ngIf="!signupForm.controls.issuingState.valid  && (signupForm.controls.issuingState.dirty || submitAttempt)">
+      <p>Please provide issuing state.</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Origin Country</ion-label>
+      <ion-select formControlName="originCountry"
+        [class.invalid]="!signupForm.controls.originCountry.valid && (signupForm.controls.originCountry.dirty || submitAttempt)">
+        <ion-option value="usa" checked="true">USA</ion-option>
+        <ion-option value="canada" >Canada</ion-option>
+        <ion-option value="mexico" >Mexico</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>VIN#</ion-label>
+      <ion-input formControlName="VIN"
+        [class.invalid]="!signupForm.controls.VIN.valid && (signupForm.controls.VIN.dirty || submitAttempt)">
+      </ion-input>
+    </ion-item>
+    <ion-item *ngIf="!signupForm.controls.VIN.valid  && (signupForm.controls.VIN.dirty || submitAttempt)">
+      <p>Please enter a valid VIN.</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Best Contact</ion-label>
+      <ion-select formControlName="bestContact"
+        [class.invalid]="!signupForm.controls.bestContact.valid && (signupForm.controls.bestContact.dirty || submitAttempt)">
+        <ion-option value="email" checked="true">Email</ion-option>
+        <ion-option value="mobile" >Call Mobile Phone</ion-option>
+        <ion-option value="sms" >SMS text</ion-option>
+      </ion-select>
+    </ion-item>
+
+  </form>
+  <button ion-button color="light" (click)="submit()">Submit</button>
+</ion-content>
