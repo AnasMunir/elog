@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 // email Validator
@@ -7,6 +7,9 @@ import { EmailValidator } from '../../validators/email';
 
 // importing pages
 import { ExistingUserPage } from '../existing-user/existing-user';
+
+// importing post provider
+import { Maanserver } from '../../providers/maanserver';
 
 @Component({
   selector: 'page-login',
@@ -19,8 +22,9 @@ export class LoginPage {
   loading: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    public formBuilder: FormBuilder, public loadingCtrl: LoadingController) {
-      
+    public formBuilder: FormBuilder, public loadingCtrl: LoadingController,
+    public maan: Maanserver, public alertCtrl: AlertController) {
+
       this.loginForm = formBuilder.group({
         email: ['', Validators.compose([Validators.required, EmailValidator.isValid])], //required
         password: ['', Validators.compose([Validators.minLength(6), Validators.required])]
@@ -36,10 +40,27 @@ export class LoginPage {
 
       this.loading = this.loadingCtrl.create({
         content: "Please wait...",
-        duration: 3000
+        duration: 1000
       });
       this.loading.present();
-      this.navCtrl.setRoot(ExistingUserPage);
+      let response = this.maan.checkLogin(this.loginForm.value);
+      // console.log(response);
+      response.subscribe(res => {
+        console.log(res);
+        if(res.response === true) {
+          let fullname = res.fullName;
+          let id = res.userId;
+          this.navCtrl.setRoot(ExistingUserPage, {fullName: fullname, id: id} );
+          // this.navCtrl.setRoot(ExistingUserPage);
+        } else {
+          let alert = this.alertCtrl.create({
+            title: 'Failure!',
+            subTitle: 'Incorrect email or password',
+            buttons: ['Retry']
+          });
+          alert.present();
+        }
+      });
     }
   }
 

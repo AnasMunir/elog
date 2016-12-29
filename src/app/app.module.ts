@@ -13,6 +13,9 @@ import { ProfilemodalPage } from '../pages/profilemodal/profilemodal';
 import { QuestionsmodalPage } from '../pages/questionsmodal/questionsmodal';
 import { SuggestionsmodalPage } from '../pages/suggestionsmodal/suggestionsmodal';
 
+//importing providers
+import { Maanserver } from '../providers/maanserver';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -42,6 +45,6 @@ import { SuggestionsmodalPage } from '../pages/suggestionsmodal/suggestionsmodal
     QuestionsmodalPage,
     SuggestionsmodalPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, Maanserver]
 })
 export class AppModule {}

@@ -1,14 +1,14 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      E-log Plus
+  <ion-navbar color="light">
+    <ion-title item-right>
+      <img src="assets/img/logo.jpg" alt="" style="width: 40%; margin-left: 28%;" />
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding class="background">
-  <h2>E-log client Portal</h2>
+<ion-content padding class="background" style="margin-top: 20px">
+  <h2 style="text-align: center">E-log client Portal</h2>
   <h4>Choose:</h4>
-  <button ion-button  color="light" outline (click)="goToSignup()">New Client</button>
-  <button ion-button  color="light" outline (click)="goToExistingUser()">Existing Client</button>
+  <button ion-button block  color="dark" outline (click)="goToSignup()">New Client</button>
+  <button ion-button block color="dark" outline (click)="goToExistingUser()">Existing Client</button>
 </ion-content>

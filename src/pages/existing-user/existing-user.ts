@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, ModalController } from 'ionic-angular';
+import { NavController, ModalController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 // importing pages
+import { HomePage } from '../home/home';
 import { QuestionsmodalPage } from '../questionsmodal/questionsmodal';
 import { HelpmodalPage } from '../helpmodal/helpmodal';
 import { ComplaintmodalPage } from '../complaintmodal/complaintmodal';
@@ -15,41 +16,45 @@ import { ProfilemodalPage } from '../profilemodal/profilemodal';
 })
 export class ExistingUserPage {
 
-  questionsForm: FormGroup;
-  submitAttempt: boolean = false;
+  public fullname; public userId;
 
-  constructor(public navCtrl: NavController,
+  constructor(public navCtrl: NavController, public navParams: NavParams,
     public formBuilder: FormBuilder, public modalCtrl: ModalController) {
+      this.fullname = navParams.get('fullName');
+      this.userId = navParams.get('id');
+      console.log('parameter 1');
+      console.log(this.fullname);
+      console.log(this.userId);
 
-    this.questionsForm = formBuilder.group({
-      complaints: [''],
-      suggestions: ['']
-    });
   }
 
   questionsModal() {
-    let modal = this.modalCtrl.create(QuestionsmodalPage);
+    let modal = this.modalCtrl.create(QuestionsmodalPage, { userId: this.userId });
     modal.present();
   }
 
   helpModal() {
-    let modal = this.modalCtrl.create(HelpmodalPage);
+    let modal = this.modalCtrl.create(HelpmodalPage, { userId: this.userId });
     modal.present();
   }
 
   complaintModal() {
-    let modal = this.modalCtrl.create(ComplaintmodalPage);
+    let modal = this.modalCtrl.create(ComplaintmodalPage, { userId: this.userId });
     modal.present();
   }
 
   suggestionsModal() {
-    let modal = this.modalCtrl.create(SuggestionsmodalPage);
+    let modal = this.modalCtrl.create(SuggestionsmodalPage, { userId: this.userId });
     modal.present();
   }
 
   profileModal() {
-    let modal = this.modalCtrl.create(ProfilemodalPage);
+    let modal = this.modalCtrl.create(ProfilemodalPage, { userId: this.userId });
     modal.present();
+  }
+
+  logout() {
+    this.navCtrl.setRoot(HomePage);
   }
 
   ionViewDidLoad() {

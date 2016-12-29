@@ -2,30 +2,21 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>existingUser</ion-title>
+    <ion-title></ion-title>
+    <button ion-button end (click)="logout()">
+      Logout
+    </button>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <h2>How May I Help You?</h2>
+  <h2>{{fullname}} How May I Help You?</h2>
   <button ion-button block outline (click)="questionsModal()">Questions</button>
   <button ion-button block outline (click)="helpModal()">Need Help?</button>
   <button ion-button block outline (click)="complaintModal()">Do You Have Any Complaints?</button>
   <button ion-button block outline (click)="suggestionsModal()">Do You Have Any Suggestions For Us</button>
   <button ion-button block outline (click)="profileModal()">Change Your Profile</button>
-  <form [formGroup]="questionsForm">
 
-    <ion-item>
-      <ion-label stacked>Complaints</ion-label>
-      <ion-textarea formControlName="complaints" rows="3" placeholder="enter your complaints here..."></ion-textarea>
-    </ion-item>
-
-    <ion-item>
-      <ion-label stacked>Suggestions</ion-label>
-      <ion-textarea formControlName="complaints" rows="3" placeholder="enter your suggestions here..."></ion-textarea>
-    </ion-item>
-
-  </form>
 </ion-content>

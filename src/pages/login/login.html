@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>login</ion-title>
+    <ion-title>Sign In</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -18,7 +18,7 @@
       <ion-item>
         <ion-label floating>Email</ion-label>
         <ion-input formControlName="email" type="email"
-        
+
         [class.invalid]="!loginForm.controls.email.valid &&
         (loginForm.controls.email.dirty || submitAttempt)"></ion-input>
       </ion-item>
@@ -39,10 +39,10 @@
       <p>Your password needs more than 6 characters.</p>
     </ion-item>
 
-  <ion-row>
+  <ion-row style="margin-top: 10px">
     <ion-col text-center>
-      <button ion-button color="light" type="submit" (click)="loginUser()">
-        Login
+      <button block ion-button color="light" type="submit" (click)="loginUser()">
+        Sign In
       </button>
     </ion-col>
   </ion-row>
