@@ -53,7 +53,7 @@ export class Maanserver {
 
     console.log('logging object from login provider');
     console.log(loginData);
-    let maanURL = 'http://tvtime.pk/e-logplus/api/sign_in';
+    let maanURL = 'http://e-logplus.com/e-logplus-app/api/sign_in';
     let body = new URLSearchParams(loginData);
     body.set('email', loginData.email);
     body.set('password', loginData.password);
@@ -77,7 +77,7 @@ export class Maanserver {
 
     console.log('logging object from question provider');
     console.log(questionData);
-    let maanURL = 'http://tvtime.pk/e-logplus/api/add_questions';
+    let maanURL = 'http://e-logplus.com/e-logplus-app/api/add_questions';
     let body = new URLSearchParams(questionData);
     body.set('question', questionData.question);
     body.set('userId', id);
@@ -96,7 +96,7 @@ export class Maanserver {
 
     console.log('logging object from question provider');
     console.log(helpData);
-    let maanURL = 'http://tvtime.pk/e-logplus/api/add_helps';
+    let maanURL = 'http://e-logplus.com/e-logplus-app/api/add_helps';
     let body = new URLSearchParams(helpData);
     body.set('help', helpData.help);
     body.set('userId', id);
@@ -115,7 +115,7 @@ export class Maanserver {
 
     console.log('logging object from question provider');
     console.log(suggestionData);
-    let maanURL = 'http://tvtime.pk/e-logplus/api/add_suggestions';
+    let maanURL = 'http://e-logplus.com/e-logplus-app/api/add_suggestions';
     let body = new URLSearchParams(suggestionData);
     body.set('suggestion', suggestionData.suggestions);
     body.set('userId', id);
@@ -134,7 +134,7 @@ export class Maanserver {
 
     console.log('logging object from question provider');
     console.log(complaintData);
-    let maanURL = 'http://tvtime.pk/e-logplus/api/add_complaints';
+    let maanURL = 'http://e-logplus.com/e-logplus-app/api/add_complaints';
     let body = new URLSearchParams(complaintData);
     body.set('complaint', complaintData.complaints);
     body.set('userId', id);
