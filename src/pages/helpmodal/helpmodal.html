@@ -19,7 +19,11 @@
 
     <ion-item>
       <ion-label stacked>help</ion-label>
-      <ion-textarea formControlName="help" rows="3" placeholder="How may we help you..."></ion-textarea>
+      <ion-textarea formControlName="help" rows="3" placeholder="How may we help you..."
+        [class.invalid]="!helpForm.controls.help.valid && (helpForm.controls.help.dirty || submitAttempt)"></ion-textarea>
+    </ion-item>
+    <ion-item *ngIf="!helpForm.controls.help.valid  && (helpForm.controls.help.dirty || submitAttempt)">
+      <p>Please enter your help before submission.</p>
     </ion-item>
   </form>
   <ion-row style="margin-top: 10px;">

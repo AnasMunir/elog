@@ -75,7 +75,7 @@
       <ion-label floating>Issuing State</ion-label>
       <ion-select formControlName="issuingState"
         [class.invalid]="!signupForm.controls.issuingState.valid && (signupForm.controls.issuingState.dirty || submitAttempt)">
-        <ion-option value="usa" selected></ion-option>
+        <ion-option value="AL" selected>AL</ion-option>
         <ion-option value="AZ" >AZ</ion-option>
         <ion-option value="CO" >CO</ion-option>
         <ion-option value="DE" >DE</ion-option>
@@ -109,16 +109,6 @@
         <ion-option value="canada" >Canada</ion-option>
         <ion-option value="mexico" >Mexico</ion-option>
       </ion-select>
-    </ion-item>
-
-    <ion-item>
-      <ion-label floating>VIN#</ion-label>
-      <ion-input formControlName="VIN" type="number"
-        [class.invalid]="!signupForm.controls.VIN.valid && (signupForm.controls.VIN.dirty || submitAttempt)">
-      </ion-input>
-    </ion-item>
-    <ion-item *ngIf="!signupForm.controls.VIN.valid  && (signupForm.controls.VIN.dirty || submitAttempt)">
-      <p>Please enter a valid VIN.</p>
     </ion-item>
 
     <ion-item>

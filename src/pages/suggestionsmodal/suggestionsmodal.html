@@ -19,7 +19,11 @@
 
     <ion-item>
       <ion-label stacked>Suggestions</ion-label>
-      <ion-textarea formControlName="suggestions" rows="3" placeholder="Please share your suggestions here..."></ion-textarea>
+      <ion-textarea formControlName="suggestions" rows="3" placeholder="Please share your suggestions here..."
+        [class.invalid]="!suggestionsForm.controls.suggestions.valid && (suggestionsForm.controls.suggestions.dirty || submitAttempt)"></ion-textarea>
+    </ion-item>
+    <ion-item *ngIf="!suggestionsForm.controls.suggestions.valid  && (suggestionsForm.controls.suggestions.dirty || submitAttempt)">
+      <p>Please enter your suggestions before submission.</p>
     </ion-item>
   </form>
   <ion-row style="margin-top: 10px;">

@@ -20,5 +20,59 @@
 
 
 <ion-content padding>
+  <form [formGroup]="profileForm">
+
+    <ion-item>
+      <ion-label stacked>bestContact</ion-label>
+      <ion-select formControlName="bestContact"
+        [class.invalid]="!profileForm.controls.bestContact.valid && (profileForm.controls.bestContact.dirty || submitAttempt)">
+        <ion-option disabled >{{bestContact}}</ion-option>
+        <ion-option value="email" selected>Email</ion-option>
+        <ion-option value="mobile" >Call Mobile Phone</ion-option>
+        <ion-option value="sms" >SMS text</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item *ngIf="!profileForm.controls.bestContact.valid  && (profileForm.controls.bestContact.dirty || submitAttempt)">
+      <p>Please enter your bestContact before submission.</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>isThisPhoneNumber</ion-label>
+      <ion-select formControlName="isThisPhoneNumber"
+        [class.invalid]="!profileForm.controls.isThisPhoneNumber.valid && (profileForm.controls.isThisPhoneNumber.dirty || submitAttempt)">
+        <ion-option disabled >{{isThisPhoneNumber}}</ion-option>
+        <ion-option value="mobile" selected>Mobile</ion-option>
+        <ion-option value="work" >Work Phone</ion-option>
+        <ion-option value="home" >Home Landline</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item *ngIf="!profileForm.controls.bestContact.valid  && (profileForm.controls.bestContact.dirty || submitAttempt)">
+      <p>Please enter your bestContact before submission.</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>phoneNumber</ion-label>
+      <ion-input formControlName="phoneNumber" rows="3" value={{phoneNumber}}
+        [class.invalid]="!profileForm.controls.phoneNumber.valid && (profileForm.controls.phoneNumber.dirty || submitAttempt)">
+      </ion-input>
+    </ion-item>
+    <ion-item *ngIf="!profileForm.controls.phoneNumber.valid  && (profileForm.controls.phoneNumber.dirty || submitAttempt)">
+      <p>Please enter your phoneNumber before submission.</p>
+    </ion-item>
+
+    <!--<ion-item>
+      <ion-label floating >Password</ion-label>
+      <ion-input formControlName="password" type="password"
+
+      [class.invalid]="!profileForm.controls.password.valid &&
+      (profileForm.controls.password.dirty || submitAttempt)"></ion-input>
+    </ion-item>-->
+
+  </form>
+  <ion-row style="margin-top: 10px;">
+    <ion-col text-center>
+      <button ion-button block color="light" (click)="submit()">Update</button>
+    </ion-col>
+  </ion-row>
 
 </ion-content>

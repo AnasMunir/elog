@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, LoadingController } from 'ionic-angular';
+import { NavController, LoadingController, AlertController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 // email Validator
@@ -22,7 +22,7 @@ export class SignupPage {
 
   constructor(public navCtrl: NavController,
     public formBuilder: FormBuilder, public maan: Maanserver,
-    public loadingCtrl: LoadingController) {
+    public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
 
       this.signupForm = formBuilder.group({
         firstName: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
@@ -33,7 +33,6 @@ export class SignupPage {
         CDL: ['', Validators.required], //required
         issuingState: ['', Validators.required], //required
         originCountry: [''],
-        VIN: ['', Validators.required], //required
         bestContact: [''],
         password: ['', Validators.compose([Validators.minLength(6), Validators.required])]
       });
@@ -53,11 +52,20 @@ export class SignupPage {
       });
       this.loading.present();
       response.subscribe(res => {
-        let fullname = res.fullName
-        let userId = res.userId;
-        this.navCtrl.setRoot(ExistingUserPage, {fullName: fullname, userId: userId} );
+        console.log(res);
+        if(res.response === true) {
+          let fullname = res.fullName
+          let id = res.userId;
+          this.navCtrl.setRoot(ExistingUserPage, {fullName: fullname, id: id} );
+        } else {
+            let alert = this.alertCtrl.create({
+            title: 'Failure!',
+            subTitle: res.errorMsg,
+            buttons: ['Retry']
+          });
+          alert.present();
+        }
         // this.navCtrl.setRoot(ExistingUserPage);
-        console.log(res)
       });
       // let fullname = this.signupForm.value.firstName + ' ' + this.signupForm.value.lastName;
       // this.navCtrl.setRoot(ExistingUserPage, {fullName: fullname} );

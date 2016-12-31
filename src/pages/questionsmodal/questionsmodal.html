@@ -19,9 +19,14 @@
 
     <ion-item>
       <ion-label stacked>Questions</ion-label>
-      <ion-textarea formControlName="question" rows="3" placeholder="Ask your question here..."></ion-textarea>
+      <ion-textarea formControlName="question" rows="3" placeholder="Ask your question here..."
+        [class.invalid]="!questionsForm.controls.question.valid && (questionsForm.controls.question.dirty || submitAttempt)"></ion-textarea>
+    </ion-item>
+    <ion-item *ngIf="!questionsForm.controls.question.valid  && (questionsForm.controls.question.dirty || submitAttempt)">
+      <p>Please enter your question before submission.</p>
     </ion-item>
   </form>
+
   <ion-row style="margin-top: 10px;">
     <ion-col text-center>
       <button ion-button block color="light" (click)="submit()">Submit</button>

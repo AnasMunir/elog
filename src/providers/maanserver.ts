@@ -16,7 +16,7 @@ export class Maanserver {
   sendSignupDataToMaan(signupData: any) {
     console.log('logging object from provider');
     console.log(signupData);
-    let maanURL = 'http://tvtime.pk/e-logplus/api/sign_up';
+    let maanURL = 'http://e-logplus.com/e-logplus-app/api/sign_up';
     let body = new URLSearchParams(signupData);
     body.set('firstName', signupData.firstName);
     body.set('lastName', signupData.lastName);
@@ -26,7 +26,6 @@ export class Maanserver {
     body.set('CDL', signupData.CDL);
     body.set('issuingState', signupData.issuingState);
     body.set('originCountry', signupData.originCountry);
-    body.set('VIN', signupData.VIN);
     body.set('bestContact', signupData.bestContact);
     body.set('password', signupData.password);
     body.set('origin', 'app');
@@ -87,7 +86,7 @@ export class Maanserver {
     let options = new RequestOptions({ headers: headers});
 
     return this.http.post(maanURL, body.toString(), options)
-    .map((res:any) => res)
+    .map((res:any) => res.json())
     //...errors if any
     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
 
@@ -106,7 +105,7 @@ export class Maanserver {
     let options = new RequestOptions({ headers: headers});
 
     return this.http.post(maanURL, body.toString(), options)
-    .map((res:any) => res)
+    .map((res:any) => res.json())
     //...errors if any
     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
 
@@ -125,7 +124,7 @@ export class Maanserver {
     let options = new RequestOptions({ headers: headers});
 
     return this.http.post(maanURL, body.toString(), options)
-    .map((res:any) => res)
+    .map((res:any) => res.json())
     //...errors if any
     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
 
@@ -144,10 +143,47 @@ export class Maanserver {
     let options = new RequestOptions({ headers: headers});
 
     return this.http.post(maanURL, body.toString(), options)
-    .map((res:any) => res)
+    .map((res:any) => res.json())
     //...errors if any
     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
 
+  }
+  changeProfilePost(id: any) {
+
+    console.log('logging object from question provider');
+    
+    let maanURL = 'http://e-logplus.com/e-logplus-app/api/get_info';
+    let body = new URLSearchParams(id);
+    body.set('userId', id);
+    body.set('origin', 'app');
+
+    let headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
+    let options = new RequestOptions({ headers: headers});
+
+    return this.http.post(maanURL, body.toString(), options)
+    .map((res:any) => res.json())
+    //...errors if any
+    .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+
+  }
+  updateProfilePost(id: any, profileData: any ) {
+    let maanURL = 'http://e-logplus.com/e-logplus-app/api/update_info';
+
+    let body = new URLSearchParams(profileData);
+    body.set('userId', id);
+    body.set('origin', 'app');
+    body.set('phoneNumber', profileData.phoneNumber);
+    body.set('isThisPhoneNumber', profileData.isThisPhoneNumber);
+    body.set('bestContact', profileData.bestContact);
+    // body.set('password', profileData.password);
+
+    let headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
+    let options = new RequestOptions({ headers: headers});
+
+    return this.http.post(maanURL, body.toString(), options)
+    .map((res:any) => res.json())
+    //...errors if any
+    .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
 
 }

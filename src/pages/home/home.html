@@ -6,9 +6,10 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding class="background" style="margin-top: 20px">
+<ion-content padding class="background" style="margin-top: 20px; background: url(assets/img/truck.jpg)">
+  <!--<img src="assets/img/truck.jpg" style="background: url(assets/img/truck.jpg)">-->
   <h2 style="text-align: center">E-log client Portal</h2>
   <h4>Choose:</h4>
-  <button ion-button block  color="dark" outline (click)="goToSignup()">New Client</button>
-  <button ion-button block color="dark" outline (click)="goToExistingUser()">Existing Client</button>
+  <button ion-button block round color="dark" outline (click)="goToSignup()">New client</button>
+  <button ion-button block round color="dark" outline (click)="goToExistingUser()">Existing client</button>
 </ion-content>

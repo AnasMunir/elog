@@ -18,7 +18,11 @@
 
     <ion-item>
       <ion-label stacked>Complaints</ion-label>
-      <ion-textarea formControlName="complaints" rows="3" placeholder="Enter your complaints here..."></ion-textarea>
+      <ion-textarea formControlName="complaints" rows="3" placeholder="Enter your complaints here..."
+        [class.invalid]="!complaintsForm.controls.complaints.valid && (complaintsForm.controls.complaints.dirty || submitAttempt)"></ion-textarea>
+    </ion-item>
+    <ion-item *ngIf="!complaintsForm.controls.complaints.valid  && (complaintsForm.controls.complaints.dirty || submitAttempt)">
+      <p>Please enter your complaints before submission.</p>
     </ion-item>
   </form>
   <ion-row style="margin-top: 10px;">
