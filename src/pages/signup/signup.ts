@@ -29,9 +29,9 @@ export class SignupPage {
         lastName: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])], //required
         email: ['', Validators.compose([Validators.required, EmailValidator.isValid])], //required
         phoneNumber: ['', Validators.maxLength(10)], //required
-        isThisPhoneNumber: ['', Validators.required], //required
-        CDL: ['', Validators.required], //required
-        issuingState: ['', Validators.required], //required
+        isThisPhoneNumber: ['', Validators.compose([Validators.required])], //required
+        CDL: ['', Validators.compose([Validators.required])], //required
+        issuingState: ['', Validators.compose([Validators.required])], //required
         originCountry: [''],
         bestContact: [''],
         password: ['', Validators.compose([Validators.minLength(6), Validators.required])]

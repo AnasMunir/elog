@@ -53,9 +53,9 @@ export class LoginPage {
           this.navCtrl.setRoot(ExistingUserPage, {fullName: fullname, id: id} );
           // this.navCtrl.setRoot(ExistingUserPage);
         } else {
-          let alert = this.alertCtrl.create({
+            let alert = this.alertCtrl.create({
             title: 'Failure!',
-            subTitle: 'Incorrect email or password',
+            subTitle: res.errorMsg,
             buttons: ['Retry']
           });
           alert.present();
