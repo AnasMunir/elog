@@ -10,6 +10,7 @@ import { Maanserver } from '../../providers/maanserver';
 
 // importing pages
 import { ExistingUserPage } from '../existing-user/existing-user';
+import { HomePage } from '../home/home';
 
 @Component({
   selector: 'page-signup',
@@ -56,7 +57,13 @@ export class SignupPage {
         if(res.response === true) {
           let fullname = res.fullName
           let id = res.userId;
-          this.navCtrl.setRoot(ExistingUserPage, {fullName: fullname, id: id} );
+          let alert = this.alertCtrl.create({
+            title: 'Success!',
+            subTitle: res.successMsg,
+            buttons: ['OK']
+          });
+          alert.present();
+          this.navCtrl.setRoot(HomePage, {fullName: fullname, id: id} );
         } else {
             let alert = this.alertCtrl.create({
             title: 'Failure!',
