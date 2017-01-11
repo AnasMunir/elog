@@ -25,22 +25,22 @@ export class SignupPage {
     public formBuilder: FormBuilder, public maan: Maanserver,
     public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
 
-      this.signupForm = formBuilder.group({
-        firstName: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
-        lastName: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])], //required
-        email: ['', Validators.compose([Validators.required, EmailValidator.isValid])], //required
-        phoneNumber: ['', Validators.maxLength(10)], //required
-        isThisPhoneNumber: ['', Validators.compose([Validators.required])], //required
-        CDL: ['', Validators.compose([Validators.required])], //required
-        issuingState: ['', Validators.compose([Validators.required])], //required
-        originCountry: [''],
-        bestContact: [''],
-        password: ['', Validators.compose([Validators.minLength(6), Validators.required])]
-      });
-    }
+    this.signupForm = formBuilder.group({
+      firstName: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
+      lastName: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])], //required
+      email: ['', Validators.compose([Validators.required, EmailValidator.isValid])], //required
+      phoneNumber: ['', Validators.maxLength(10)], //required
+      isThisPhoneNumber: ['', Validators.compose([Validators.required])], //required
+      CDL: ['', Validators.compose([Validators.required])], //required
+      issuingState: ['', Validators.compose([Validators.required])], //required
+      originCountry: [''],
+      bestContact: [''],
+      password: ['', Validators.compose([Validators.minLength(6), Validators.required])]
+    });
+  }
   submit() {
     this.submitAttempt = true;
-    if(!this.signupForm.valid) {
+    if (!this.signupForm.valid) {
       console.log(' Some values were not given or were incorrect, please fill them');
     } else {
       console.log('success!');
@@ -54,7 +54,7 @@ export class SignupPage {
       this.loading.present();
       response.subscribe(res => {
         console.log(res);
-        if(res.response === true) {
+        if (res.response === true) {
           let fullname = res.fullName
           let id = res.userId;
           let alert = this.alertCtrl.create({
@@ -63,9 +63,9 @@ export class SignupPage {
             buttons: ['OK']
           });
           alert.present();
-          this.navCtrl.setRoot(HomePage, {fullName: fullname, id: id} );
+          this.navCtrl.setRoot(HomePage, { fullName: fullname, id: id });
         } else {
-            let alert = this.alertCtrl.create({
+          let alert = this.alertCtrl.create({
             title: 'Failure!',
             subTitle: res.errorMsg,
             buttons: ['Retry']
