@@ -7,6 +7,7 @@ import { EmailValidator } from '../../validators/email';
 
 // importing pages
 import { ExistingUserPage } from '../existing-user/existing-user';
+import { ForgotPasswordPage } from '../forgot-password/forgot-password';
 
 // importing post provider
 import { Maanserver } from '../../providers/maanserver';
@@ -62,6 +63,9 @@ export class LoginPage {
         }
       });
     }
+  }
+  forgotPassword() {
+    this.navCtrl.push(ForgotPasswordPage);
   }
 
   ionViewDidLoad() {

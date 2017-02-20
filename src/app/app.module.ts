@@ -12,6 +12,7 @@ import { HelpmodalPage } from '../pages/helpmodal/helpmodal';
 import { ProfilemodalPage } from '../pages/profilemodal/profilemodal';
 import { QuestionsmodalPage } from '../pages/questionsmodal/questionsmodal';
 import { SuggestionsmodalPage } from '../pages/suggestionsmodal/suggestionsmodal';
+import { ForgotPasswordPage } from '../pages/forgot-password/forgot-password';
 
 //importing providers
 import { Maanserver } from '../providers/maanserver';
@@ -27,7 +28,8 @@ import { Maanserver } from '../providers/maanserver';
     HelpmodalPage,
     ProfilemodalPage,
     QuestionsmodalPage,
-    SuggestionsmodalPage
+    SuggestionsmodalPage,
+    ForgotPasswordPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -43,7 +45,8 @@ import { Maanserver } from '../providers/maanserver';
     HelpmodalPage,
     ProfilemodalPage,
     QuestionsmodalPage,
-    SuggestionsmodalPage
+    SuggestionsmodalPage,
+    ForgotPasswordPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, Maanserver]
 })

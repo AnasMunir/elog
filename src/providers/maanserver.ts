@@ -185,5 +185,19 @@ export class Maanserver {
     //...errors if any
     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
+  changePassword(profileData: any) {
+    let maanURL = 'http://e-logplus.com/e-logplus-app/account/forgot_password';
+
+    let body = new URLSearchParams(profileData);
+    body.set('email', profileData.email);
+
+    let headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
+    let options = new RequestOptions({ headers: headers});
+
+    return this.http.post(maanURL, body.toString(), options)
+    .map((res:any) => res.json())
+    //...errors if any
+    .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+  }
 
 }
