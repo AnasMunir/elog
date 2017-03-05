@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController, LoadingController, AlertController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NativeStorage } from 'ionic-native';
 
 // importing post provider
 import { Maanserver } from '../../providers/maanserver';
@@ -25,7 +26,10 @@ export class ProfilemodalPage {
     public viewCtrl: ViewController, public loadingCtrl: LoadingController, public alertCtrl: AlertController,
     public maan: Maanserver, public formBuilder: FormBuilder) {
 
-      this.userId = this.navParams.get('userId');
+      // this.userId = this.navParams.get('userId');
+      NativeStorage.getItem('user').then(data => {
+        this.userId = data.id;
+      })
       this.profileForm = formBuilder.group({
         bestContact: ['', Validators.compose([Validators.required])],
         isThisPhoneNumber: ['', Validators.compose([Validators.required])],

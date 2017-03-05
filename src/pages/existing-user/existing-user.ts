@@ -53,10 +53,6 @@ export class ExistingUserPage {
     modal.present();
   }
 
-  logout() {
-    this.navCtrl.setRoot(HomePage);
-  }
-
   ionViewDidLoad() {
     console.log('ionViewDidLoad ExistingUserPage');
   }

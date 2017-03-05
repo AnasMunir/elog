@@ -4,10 +4,14 @@
     <button ion-button menuToggle icon-only>
       <ion-icon name='menu'></ion-icon>
     </button>
-    <ion-title></ion-title>
-    <button ion-button end (click)="logout()">
-      Logout
-    </button>
+    <ion-title>
+      <img src="assets/img/logo.jpg" alt="" 
+      style="
+        height: 8vh !important;
+        width: auto !important;
+        margin: auto !important;
+        display: block !important;" />
+    </ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -19,6 +23,6 @@
   <!--<button ion-button block outline (click)="helpModal()">Need Help?</button>-->
   <button ion-button block outline (click)="complaintModal()">Give us your Feedback</button>
   <button ion-button block outline (click)="suggestionsModal()">Suggestions</button>
-  <button ion-button block outline (click)="profileModal()">Update Your Profile</button>
+  <!--<button ion-button block outline (click)="profileModal()">Update Your Profile</button>-->
 
 </ion-content>
