@@ -199,5 +199,37 @@ export class Maanserver {
     //...errors if any
     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
+  checkoutTransaction(cardData: any, id: any) {
+
+    console.log('logging object from card provider');
+    console.log(cardData);
+
+    let maanURL = 'http://e-logplus.com/e-logplus-app/api/checkout';
+    let body = new URLSearchParams(cardData);
+
+    body.set('userId', id);
+    body.set('origin', 'app');
+    body.set('number', cardData.cardNo);
+    body.set('exp_month', cardData.expMonth);
+    body.set('exp_year', cardData.expYear);
+    body.set('amount', cardData.amount);
+    body.set('itemName', 'Dongle');
+    
+    console.log(body);
+
+    let headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
+    let options = new RequestOptions({ headers: headers});
+
+    return this.http.post(maanURL, body.toString(), options)
+    .map((res:any) => res.json())
+    //...errors if any
+    .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+      // .subscribe(data => {
+      //   let response = data.json().response;
+      //   return response;
+      // }, error => {
+      //   console.log(error);
+      // })
+  }
 
 }

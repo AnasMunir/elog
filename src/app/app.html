@@ -1,1 +1,22 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu [content]="content">
+
+    <ion-header>
+        <ion-toolbar color="primary" class="sentico-bold">
+            <ion-title>Menu</ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content class="primary-bg">
+        <ion-list class="primary-bg">
+            <button menuClose ion-item *ngFor="let p of pages"
+                (click)="openPage(p)">
+                {{p.title}}
+            </button>
+        </ion-list>
+
+        <div>
+            <img src="assets/img/logo-greyscale.svg" style="width:100%; position:absolute; bottom:0; opacity:0.5;">
+        </div>
+    </ion-content>
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

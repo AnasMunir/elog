@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NativeStorage } from 'ionic-native';
 
 // email Validator
 import { EmailValidator } from '../../validators/email';
@@ -26,16 +27,16 @@ export class LoginPage {
     public formBuilder: FormBuilder, public loadingCtrl: LoadingController,
     public maan: Maanserver, public alertCtrl: AlertController) {
 
-      this.loginForm = formBuilder.group({
-        email: ['', Validators.compose([Validators.required, EmailValidator.isValid])], //required
-        password: ['', Validators.compose([Validators.minLength(6), Validators.required])]
-      });
-    }
+    this.loginForm = formBuilder.group({
+      email: ['', Validators.compose([Validators.required, EmailValidator.isValid])], //required
+      password: ['', Validators.compose([Validators.minLength(6), Validators.required])]
+    });
+  }
 
   loginUser() {
     this.submitAttempt = true;
 
-    if (!this.loginForm.valid){
+    if (!this.loginForm.valid) {
       console.log(this.loginForm.value);
     } else {
 
@@ -48,13 +49,19 @@ export class LoginPage {
       // console.log(response);
       response.subscribe(res => {
         console.log(res);
-        if(res.response === true) {
+        if (res.response === true) {
           let fullname = res.fullName;
           let id = res.userId;
-          this.navCtrl.setRoot(ExistingUserPage, {fullName: fullname, id: id} );
+          NativeStorage.setItem('user',
+            {
+              fullName: fullname,
+              id: id
+            }).then(_ => {
+              this.navCtrl.setRoot(ExistingUserPage, { fullName: fullname, id: id });
+            }).catch(err => console.log)
           // this.navCtrl.setRoot(ExistingUserPage);
         } else {
-            let alert = this.alertCtrl.create({
+          let alert = this.alertCtrl.create({
             title: 'Failure!',
             subTitle: res.errorMsg,
             buttons: ['Retry']

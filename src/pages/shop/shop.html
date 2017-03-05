@@ -1,0 +1,33 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle icon-only>
+      <ion-icon name='menu'></ion-icon>
+    </button>
+    <ion-title>Shop</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="card-background-page">
+  <a href="https://play.google.com/store/apps/details?id=com.gpstrackingnetwork&hl=en" style="text-decoration:none;">
+    <ion-card>
+      <img src="assets/img/app.jpg" />
+      <div class="card-title">E-log Store App</div>
+      <div class="card-subtitle">Free</div>
+    </ion-card>
+
+  </a>
+  <ion-card (click)="checkout()">
+    <img src="assets/img/dongle.jpg" />
+    <div class="card-title">Dongle</div>
+    <div class="card-subtitle">$159</div>
+  </ion-card>
+  <ion-card>
+    <img src="assets/img/tablet.jpg" />
+    <div class="card-title">Tablet</div>
+    <div class="card-subtitle"></div>
+  </ion-card>
+
+</ion-content>

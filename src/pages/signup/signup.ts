@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, LoadingController, AlertController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { NativeStorage } from 'ionic-native';
 // email Validator
 import { EmailValidator } from '../../validators/email';
 
@@ -31,7 +31,7 @@ export class SignupPage {
       email: ['', Validators.compose([Validators.required, EmailValidator.isValid])], //required
       phoneNumber: ['', Validators.maxLength(10)], //required
       isThisPhoneNumber: ['', Validators.compose([Validators.required])], //required
-      CDL: ['', Validators.compose([Validators.required])], //required
+      CDL: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z0-9 ]*')])], //required
       issuingState: ['', Validators.compose([Validators.required])], //required
       originCountry: [''],
       bestContact: [''],
@@ -63,7 +63,14 @@ export class SignupPage {
             buttons: ['OK']
           });
           alert.present();
-          this.navCtrl.setRoot(HomePage, { fullName: fullname, id: id });
+          NativeStorage.setItem('user',
+            {
+              fullName: fullname,
+              id: id
+            }).then(_ => {
+              // this.navCtrl.setRoot(ExistingUserPage, { fullName: fullname, id: id });
+              this.navCtrl.setRoot(HomePage, { fullName: fullname, id: id });
+            }).catch(err => console.log)
         } else {
           let alert = this.alertCtrl.create({
             title: 'Failure!',

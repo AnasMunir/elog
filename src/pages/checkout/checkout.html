@@ -1,0 +1,48 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Checkout</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+
+  <form [formGroup]="checkoutForm">
+    <ion-item>
+      <ion-label>Card Number</ion-label>
+      <ion-input type="number" formControlName="cardNo" placeholder="1234567891234567" [class.invalid]="!checkoutForm.controls.cardNo.valid && (checkoutForm.controls.cardNo.dirty || submitAttempt)"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="!checkoutForm.controls.cardNo.valid && (checkoutForm.controls.cardNo.dirty || submitAttempt)">
+      <p>Invalid Card Number</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Expiration Month</ion-label>
+      <ion-input type="number" formControlName="expMonth" placeholder="11" [class.invalid]="!checkoutForm.controls.expMonth.valid && (checkoutForm.controls.expMonth.dirty || submitAttempt)"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="!checkoutForm.controls.expMonth.valid && (checkoutForm.controls.expMonth.dirty || submitAttempt)">
+      <p>Invalid Expiry Month</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Expiration Year</ion-label>
+      <ion-input type="number" formControlName="expYear" placeholder="18" [class.invalid]="!checkoutForm.controls.expYear.valid && (checkoutForm.controls.expYear.dirty || submitAttempt)"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="!checkoutForm.controls.expYear.valid && (checkoutForm.controls.expYear.dirty || submitAttempt)">
+      <p>Invalid Expiry Year</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Amount</ion-label>
+      <ion-label>$159</ion-label>
+    </ion-item>
+
+  </form>
+  <button ion-button block outline (click)="pay()">Pay</button>
+
+
+  <img src="assets/img/payments.jpg" style="width:100%; height:auto; position:absolute; bottom:0; left:0;">
+</ion-content>
